@@ -4,7 +4,7 @@ var baseUrl = 'http://placecage.com/';
 var el = getElToAppendTo();
 
 if (el != null) {
-  var alert = createAlertBase();
+  var alert = createAlertBase('placecage');
 
   alert.setMessageText("Place Cage Options");
   alert.setInformativeText("Customize the image of the best actor of all time that will be created.");

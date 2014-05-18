@@ -4,7 +4,7 @@ var baseUrl = 'http://lorempixel.com/';
 var el = getElToAppendTo();
 
 if (el != null) {
-  var alert = createAlertBase();
+  var alert = createAlertBase('lorempixel');
 
   alert.setMessageText("Lorem Pixel Options");
   alert.setInformativeText("Customize the image that will be created.");

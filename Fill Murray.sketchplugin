@@ -4,10 +4,10 @@ var baseUrl = 'http://fillmurray.com/';
 var el = getElToAppendTo();
 
 if (el != null) {
-  var alert = createAlertBase();
+  var alert = createAlertBase('fillmurray');
 
   alert.setMessageText("Fill Murray Options");
-  alert.setInformativeText("Customize the wonderful Bill Murray that will be created.");
+  alert.setInformativeText("Customize the wonderful Bill Murray image that will be created.");
 
   var types = ['calm', 'gray'];
   var typeSelect = createSelect(types, 0);

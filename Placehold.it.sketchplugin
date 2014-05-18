@@ -4,7 +4,7 @@ var baseUrl = 'http://placehold.it/';
 var el = getElToAppendTo();
 
 if (el != null) {
-  var alert = createAlertBase();
+  var alert = createAlertBase('placeholdit');
 
   alert.setMessageText("Placehold.it Settings");
   alert.setInformativeText("Customize the image that will be created.");
