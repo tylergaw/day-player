@@ -1,4 +1,3 @@
-// (ctrl alt p)
 #import 'lib/utils.js'
 
 var baseUrl = 'http://placehold.it/';
