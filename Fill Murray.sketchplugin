@@ -1,0 +1,52 @@
+#import 'lib/utils.js'
+
+var baseUrl = 'http://fillmurray.com/';
+var el = getElToAppendTo();
+
+if (el != null) {
+  var alert = createAlertBase();
+
+  alert.setMessageText("Fill Murray Options");
+  alert.setInformativeText("Customize the wonderful Bill Murray that will be created.");
+
+  var types = ['calm', 'gray'];
+  var typeSelect = createSelect(types, 0);
+
+  alert.addTextLabelWithValue("Type:");
+  alert.addAccessoryView(typeSelect);
+
+  alert.addTextLabelWithValue("Width:");
+  alert.addTextFieldWithValue("300");
+
+  alert.addTextLabelWithValue("Height:");
+  alert.addTextFieldWithValue("200");
+
+  var responseCode = alert.runModal();
+
+  handleAlertResponse(alert, responseCode, el);
+}
+
+function handleAlertResponse(alert, responseCode, el) {
+  // The OK button will return a code of 1000
+  // Cancel is 1001.
+  // The codes are odd. They are based off the button's position in the view.
+  // They are explain in more detail in the NSAlert docs
+  // https://developer.apple.com/library/mac/documentation/cocoa/reference/applicationkit/classes/NSAlert_Class/Reference/Reference.html#//apple_ref/doc/constant_group/Button_Return_Values
+  // There's no anchor to it, but search for "Button Return Values" in the page
+  if (responseCode == "1000") {
+
+    var opts = {
+      type: valAtIndex(alert, 1),
+      width: valAtIndex(alert, 3),
+      height: valAtIndex(alert, 5)
+    }
+
+    var type = (opts['type'] == 'gray') ? 'g/' : '';
+    var size = opts.width + '/' + opts.height;
+    var url = baseUrl + type + size;
+
+    doc.showMessage('Creating a ' + size + 'px image from fillmurray.com...');
+
+    createAndPlaceImg(url, size, el);
+  }
+}
