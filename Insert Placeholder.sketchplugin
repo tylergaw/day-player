@@ -1,5 +1,0 @@
-// (ctrl alt p)
-#import 'lib/utils.js'
-
-var el = getElToAppendTo();
-log(el);
