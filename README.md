@@ -10,6 +10,8 @@ of different placeholder image services.
  - [fillmurray.com](http://www.fillmurray.com/)
  - [placecage.com](http://www.placecage.com/)
 
+![Screenshots of Day Player in use](http://f.cl.ly/items/0Q1x2l0k371C173X3U0g/dayplayer-screens.jpg)
+
 ## Installation
 There are two different ways to install Day Player. Official Sketch Plugin installation
 documentation can be found in the [plugin docs](http://bohemiancoding.com/sketch/support/developer/01-introduction/01.html).
