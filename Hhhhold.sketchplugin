@@ -1,0 +1,63 @@
+#import 'lib/utils.js'
+
+var baseUrl = 'http://hhhhold.com/';
+var el = getElToAppendTo();
+
+if (el != null) {
+  var alert = createAlertBase('hhhhold');
+
+  alert.setMessageText("Hhhhold Options");
+  alert.setInformativeText("Customize the chaos that will be unleashed.");
+
+  var types = [
+    'any',
+    'dark',
+    'bright'
+  ];
+  var typeSelect = createSelect(types, 0);
+
+  alert.addTextLabelWithValue("Brightness:");
+  alert.addAccessoryView(typeSelect);
+
+  alert.addTextLabelWithValue("Width:");
+  alert.addTextFieldWithValue("300");
+
+  alert.addTextLabelWithValue("Height:");
+  alert.addTextFieldWithValue("200");
+
+  var responseCode = alert.runModal();
+
+  handleAlertResponse(alert, responseCode, el);
+}
+
+function handleAlertResponse(alert, responseCode, el) {
+  // The OK button will return a code of 1000
+  // Cancel is 1001.
+  // The codes are odd. They are based off the button's position in the view.
+  // They are explain in more detail in the NSAlert docs
+  // https://developer.apple.com/library/mac/documentation/cocoa/reference/applicationkit/classes/NSAlert_Class/Reference/Reference.html#//apple_ref/doc/constant_group/Button_Return_Values
+  // There's no anchor to it, but search for "Button Return Values" in the page
+  if (responseCode == "1000") {
+
+    var opts = {
+      type: valAtIndex(alert, 1),
+      width: valAtIndex(alert, 3),
+      height: valAtIndex(alert, 5)
+    }
+
+    var type = '';
+
+    if (opts['type'] == 'dark') {
+      type = '/d';
+    } else if (opts['type'] == 'bright') {
+      type = '/b';
+    }
+
+    var size = opts.width + 'x' + opts.height;
+    var url = baseUrl + size + type;
+
+    doc.showMessage('Turning loose a ' + size + 'px image from hhhold.com...');
+
+    createAndPlaceImg(url, size, el);
+  }
+}
