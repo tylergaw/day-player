@@ -22,7 +22,7 @@ documentation can be found in the [plugin docs](http://bohemiancoding.com/sketch
  - Using a command line app (Terminal, iTerm, etc) navigate to the Sketch Plugins
  directory. This is different depending on your set up. If you're unsure, open
  Sketch and go to the Plugins menu > Reveal Plugins Folder
- - Once you're in the Plugins directory `git clone git@github.com:tylergaw/day-player.git` or your fork.
+ - Once you're in the Plugins directory `git clone https://github.com/tylergaw/day-player.git` or your fork.
  - You can find the plugins in the Plugins Menu > day-player
 
 ### Zip download
