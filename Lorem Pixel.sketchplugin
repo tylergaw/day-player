@@ -65,7 +65,7 @@ function handleAlertResponse(alert, responseCode, el) {
     var size = opts.width + '/' + opts.height;
     var url = baseUrl + size + type;
 
-    doc.showMessage('Creating a ' + size + 'px image from lorempixel.com...');
+    sketch.doc.showMessage('Creating a ' + size + 'px image from lorempixel.com...');
 
     createAndPlaceImg(url, size, el);
   }

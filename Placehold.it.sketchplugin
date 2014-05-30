@@ -51,7 +51,7 @@ function handleAlertResponse(alert, responseCode, el) {
     var text = '&text=' + encodeURIComponent(opts.txt);
     var url = baseUrl + size + '/' + color + text;
 
-    doc.showMessage('Creating a ' + size + 'px image from placehold.it...');
+    sketch.doc.showMessage('Creating a ' + size + 'px image from placehold.it...');
 
     createAndPlaceImg(url, size, el);
   }

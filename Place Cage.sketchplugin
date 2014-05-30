@@ -52,7 +52,7 @@ function handleAlertResponse(alert, responseCode, el) {
     var size = opts.width + '/' + opts.height;
     var url = baseUrl + type + size;
 
-    doc.showMessage('Creating a ' + size + 'px image from placecage.com...');
+    sketch.doc.showMessage('Creating a ' + size + 'px image from placecage.com...');
 
     createAndPlaceImg(url, size, el);
   }

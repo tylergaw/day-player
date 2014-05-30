@@ -56,7 +56,7 @@ function handleAlertResponse(alert, responseCode, el) {
     var size = opts.width + 'x' + opts.height;
     var url = baseUrl + size + type;
 
-    doc.showMessage('Turning loose a ' + size + 'px image from hhhold.com...');
+    sketch.doc.showMessage('Turning loose a ' + size + 'px image from hhhold.com...');
 
     createAndPlaceImg(url, size, el);
   }
