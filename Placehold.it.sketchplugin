@@ -1,19 +1,17 @@
 #import 'lib/utils.js'
 
 var baseUrl = 'http://placehold.it/';
+var serviceName = 'placeholdit';
+var serviceStorage = getServiceStorage(serviceName);
 var el = getElToAppendTo();
 
 if (el != null) {
-  var alert = createAlertBase('placeholdit');
+  var alert = createAlertBase(serviceName);
 
   alert.setMessageText("Placehold.it Settings");
   alert.setInformativeText("Customize the image that will be created.");
 
-  alert.addTextLabelWithValue("Width:");
-  alert.addTextFieldWithValue("350");
-
-  alert.addTextLabelWithValue("Height:");
-  alert.addTextFieldWithValue("150");
+  addDimensionFieldsToAlert(alert);
 
   alert.addTextLabelWithValue("Background Color:");
   alert.addTextFieldWithValue("#cccccc");
@@ -22,7 +20,7 @@ if (el != null) {
   alert.addTextFieldWithValue("#969696");
 
   alert.addTextLabelWithValue("Text:");
-  alert.addTextFieldWithValue("350x250");
+  alert.addTextFieldWithValue("Placeholder");
 
   var responseCode = alert.runModal();
 
@@ -45,6 +43,8 @@ function handleAlertResponse(alert, responseCode, el) {
       txtColor: valAtIndex(alert, 7).replace('#', ''),
       txt: valAtIndex(alert, 9)
     }
+
+    storeUserValuesForService(opts, serviceStorage);
 
     var size = opts.width + 'x' + opts.height;
     var color = opts.bgColor + '/' + opts.txtColor;

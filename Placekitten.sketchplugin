@@ -1,25 +1,25 @@
 #import 'lib/utils.js'
 
 var baseUrl = 'http://placekitten.com/';
+var serviceName = 'placekitten';
+var serviceStorage = getServiceStorage(serviceName);
 var el = getElToAppendTo();
 
 if (el != null) {
-  var alert = createAlertBase('placekitten');
+  var alert = createAlertBase(serviceName);
 
   alert.setMessageText("Placekitten Options");
   alert.setInformativeText("Customize the kewl kitten image that will be created.");
 
   var types = ['normal', 'gray'];
-  var typeSelect = createSelect(types, 0);
+
+  // We use indexOf here because we store the value selected, not the index.
+  var typeSelect = createSelect(types, types.indexOf(serviceStorage.type));
 
   alert.addTextLabelWithValue("Type:");
   alert.addAccessoryView(typeSelect);
 
-  alert.addTextLabelWithValue("Width:");
-  alert.addTextFieldWithValue("300");
-
-  alert.addTextLabelWithValue("Height:");
-  alert.addTextFieldWithValue("200");
+  addDimensionFieldsToAlert(alert);
 
   var responseCode = alert.runModal();
 
@@ -40,6 +40,8 @@ function handleAlertResponse(alert, responseCode, el) {
       width: valAtIndex(alert, 3),
       height: valAtIndex(alert, 5)
     }
+
+    storeUserValuesForService(opts, serviceStorage);
 
     var type = (opts['type'] == 'gray') ? 'g/' : '';
     var size = opts.width + '/' + opts.height;

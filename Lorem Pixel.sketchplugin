@@ -1,10 +1,12 @@
 #import 'lib/utils.js'
 
 var baseUrl = 'http://lorempixel.com/';
+var serviceName = 'lorempixel';
+var serviceStorage = getServiceStorage(serviceName);
 var el = getElToAppendTo();
 
 if (el != null) {
-  var alert = createAlertBase('lorempixel');
+  var alert = createAlertBase(serviceName);
 
   alert.setMessageText("Lorem Pixel Options");
   alert.setInformativeText("Customize the image that will be created.");
@@ -25,16 +27,14 @@ if (el != null) {
     'technics',
     'transport'
   ];
-  var typeSelect = createSelect(types, 0);
+
+  // We use indexOf here because we store the value selected, not the index.
+  var typeSelect = createSelect(types, types.indexOf(serviceStorage.type));
 
   alert.addTextLabelWithValue("Category:");
   alert.addAccessoryView(typeSelect);
 
-  alert.addTextLabelWithValue("Width:");
-  alert.addTextFieldWithValue("300");
-
-  alert.addTextLabelWithValue("Height:");
-  alert.addTextFieldWithValue("200");
+  addDimensionFieldsToAlert(alert);
 
   var responseCode = alert.runModal();
 
@@ -55,6 +55,8 @@ function handleAlertResponse(alert, responseCode, el) {
       width: valAtIndex(alert, 3),
       height: valAtIndex(alert, 5)
     }
+
+    storeUserValuesForService(opts, serviceStorage);
 
     var type = '';
 
