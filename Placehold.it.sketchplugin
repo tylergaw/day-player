@@ -14,13 +14,13 @@ if (el != null) {
   addDimensionFieldsToAlert(alert);
 
   alert.addTextLabelWithValue("Background Color:");
-  alert.addTextFieldWithValue("#cccccc");
+  alert.addTextFieldWithValue("#" + (serviceStorage.bgColor || "cccccc"));
 
   alert.addTextLabelWithValue("Text Color:");
-  alert.addTextFieldWithValue("#969696");
+  alert.addTextFieldWithValue("#" + (serviceStorage.txtColor || "969696"));
 
   alert.addTextLabelWithValue("Text:");
-  alert.addTextFieldWithValue("Placeholder");
+  alert.addTextFieldWithValue(serviceStorage.txt || "Placeholder");
 
   var responseCode = alert.runModal();
 
