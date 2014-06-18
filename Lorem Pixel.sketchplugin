@@ -34,7 +34,7 @@ if (el != null) {
   alert.addTextLabelWithValue("Category:");
   alert.addAccessoryView(typeSelect);
 
-  addDimensionFieldsToAlert(alert);
+  addDimensionFieldsToAlert(alert, serviceStorage);
 
   var responseCode = alert.runModal();
 

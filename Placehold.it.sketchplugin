@@ -11,7 +11,7 @@ if (el != null) {
   alert.setMessageText("Placehold.it Settings");
   alert.setInformativeText("Customize the image that will be created.");
 
-  addDimensionFieldsToAlert(alert);
+  addDimensionFieldsToAlert(alert, serviceStorage);
 
   alert.addTextLabelWithValue("Background Color:");
   alert.addTextFieldWithValue("#" + (serviceStorage.bgColor || "cccccc"));

@@ -19,7 +19,7 @@ if (el != null) {
   alert.addTextLabelWithValue("Type:");
   alert.addAccessoryView(typeSelect);
 
-  addDimensionFieldsToAlert(alert);
+  addDimensionFieldsToAlert(alert, serviceStorage);
 
   var responseCode = alert.runModal();
 
