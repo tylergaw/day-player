@@ -1,0 +1,44 @@
+#import 'lib/utils.js'
+
+var baseUrl = 'http://placepuppy.it/';
+var serviceName = 'placepuppy';
+var serviceStorage = getServiceStorage(serviceName);
+var el = getElToAppendTo();
+
+if (el != null) {
+  var alert = createAlertBase(serviceName);
+
+  alert.setMessageText("Placepuppy Options");
+  alert.setInformativeText("Customize the cute puppy image that will be created.");
+
+  addDimensionFieldsToAlert(alert, serviceStorage);
+
+  var responseCode = alert.runModal();
+
+  handleAlertResponse(alert, responseCode, el);
+}
+
+function handleAlertResponse(alert, responseCode, el) {
+  // The OK button will return a code of 1000
+  // Cancel is 1001.
+  // The codes are odd. They are based off the button's position in the view.
+  // They are explain in more detail in the NSAlert docs
+  // https://developer.apple.com/library/mac/documentation/cocoa/reference/applicationkit/classes/NSAlert_Class/Reference/Reference.html#//apple_ref/doc/constant_group/Button_Return_Values
+  // There's no anchor to it, but search for "Button Return Values" in the page
+  if (responseCode == "1000") {
+
+    var opts = {
+      width: valAtIndex(alert, 1),
+      height: valAtIndex(alert, 3)
+    }
+
+    storeUserValuesForService(opts, serviceStorage);
+
+    var size = opts.width + '/' + opts.height;
+    var url = baseUrl + size;
+
+    sketch.doc.showMessage('Creating a ' + size + 'px image from placepuppy.com...');
+
+    createAndPlaceImg(url, size, el);
+  }
+}
