@@ -10,6 +10,7 @@ of different placeholder image services.
  - [fillmurray.com](http://www.fillmurray.com/)
  - [placecage.com](http://www.placecage.com/)
  - [placekitten.com](http://placekitten.com/)
+ - [placepuppy.it](http://placepuppy.it/)
  - [hhhhold.com](http://hhhhold.com/)
 
 ![Screenshots of Day Player in use](http://f.cl.ly/items/0Q1x2l0k371C173X3U0g/dayplayer-screens.jpg)
