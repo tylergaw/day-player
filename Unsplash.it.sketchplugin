@@ -1,0 +1,61 @@
+#import 'lib/utils.js'
+
+var baseUrl = 'http://unsplash.it';
+var serviceName = 'unsplashit';
+var serviceStorage = getServiceStorage(serviceName);
+var el = getElToAppendTo();
+
+if (el != null) {
+  var alert = createAlertBase(serviceName);
+
+  alert.setMessageText("Unplash.it Options");
+  alert.setInformativeText("Customize the image you get from unplash.it.");
+
+  var types = ['normal', 'gray'];
+
+  // We use indexOf here because we store the value selected, not the index.
+  var typeSelect = createSelect(types, types.indexOf(serviceStorage.type));
+
+  alert.addTextLabelWithValue("Color mode:");
+  alert.addAccessoryView(typeSelect);
+
+  addDimensionFieldsToAlert(alert, serviceStorage);
+
+  var responseCode = alert.runModal();
+
+  handleAlertResponse(alert, responseCode, el);
+}
+
+function handleAlertResponse(alert, responseCode, el) {
+  // The OK button will return a code of 1000
+  // Cancel is 1001.
+  // The codes are odd. They are based off the button's position in the view.
+  // They are explain in more detail in the NSAlert docs
+  // https://developer.apple.com/library/mac/documentation/cocoa/reference/applicationkit/classes/NSAlert_Class/Reference/Reference.html#//apple_ref/doc/constant_group/Button_Return_Values
+  // There's no anchor to it, but search for "Button Return Values" in the page
+  if (responseCode == "1000") {
+
+    var opts = {
+      type: valAtIndex(alert, 1),
+      width: valAtIndex(alert, 3),
+      height: valAtIndex(alert, 5)
+    }
+
+    storeUserValuesForService(opts, serviceStorage);
+
+    var type = '';
+
+    if (opts['type'] == 'normal') {
+      type = '/';
+    } else if (opts['type'] == 'gray') {
+      type = '/g/';
+    }
+
+    var size = opts.width + '/' + opts.height;
+    var url = baseUrl + type + size + '?random';
+
+    sketch.doc.showMessage('Pulling a ' + size + 'px image from unplash.it...');
+
+    createAndPlaceImg(url, size, el);
+  }
+}
