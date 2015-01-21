@@ -5,19 +5,16 @@ var serviceName = 'placekitten';
 var serviceStorage = getServiceStorage(serviceName);
 var el = getElToAppendTo();
 
+// This is a little strange. The service has stopped responding with images if
+// the "/g" part of the URL is not there. Due to that, we'll only be able to
+// get grayscale images from this service.
+var IMAGE_TYPE = 'gray';
+
 if (el != null) {
   var alert = createAlertBase(serviceName);
 
   alert.setMessageText("Placekitten Options");
   alert.setInformativeText("Customize the kewl kitten image that will be created.");
-
-  var types = ['normal', 'gray'];
-
-  // We use indexOf here because we store the value selected, not the index.
-  var typeSelect = createSelect(types, types.indexOf(serviceStorage.type));
-
-  alert.addTextLabelWithValue("Type:");
-  alert.addAccessoryView(typeSelect);
 
   addDimensionFieldsToAlert(alert, serviceStorage);
 
@@ -36,9 +33,9 @@ function handleAlertResponse(alert, responseCode, el) {
   if (responseCode == "1000") {
 
     var opts = {
-      type: valAtIndex(alert, 1),
-      width: valAtIndex(alert, 3),
-      height: valAtIndex(alert, 5)
+      type: IMAGE_TYPE,
+      width: valAtIndex(alert, 1),
+      height: valAtIndex(alert, 3)
     }
 
     storeUserValuesForService(opts, serviceStorage);
