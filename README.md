@@ -11,7 +11,6 @@ of different placeholder image services.
  - [placecage.com](http://www.placecage.com/)
  - [placekitten.com](http://placekitten.com/)
  - [placepuppy.it](http://placepuppy.it/)
- - [hhhhold.com](http://hhhhold.com/)
  - [unsplash.it](http://unsplash.it/)
 
 ![Screenshots of Day Player in use](http://f.cl.ly/items/0Q1x2l0k371C173X3U0g/dayplayer-screens.jpg)
