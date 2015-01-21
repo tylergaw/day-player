@@ -10,7 +10,6 @@ of different placeholder image services.
  - [fillmurray.com](http://www.fillmurray.com/)
  - [placecage.com](http://www.placecage.com/)
  - [placekitten.com](http://placekitten.com/)
- - [placepuppy.it](http://placepuppy.it/)
  - [hhhhold.com](http://hhhhold.com/)
  - [unsplash.it](http://unsplash.it/)
 
