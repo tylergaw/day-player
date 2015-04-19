@@ -44,6 +44,9 @@ If you want the image created on a specific artboard or within a group, select
 the artboard or group before running the plugin.
 
 ## Sketch Requirements
+
+Day Player 2.x works with Sketch 3.3+ only. If you are using an earlier version of Sketch, use Day Player 1.1.0.
+
 You'll need the latest release of Sketch 3, version 3.0.2. It's in the App Store.
 This version is needed because I'm making use of features that are available now
 that they've switched from JSTalk to CocoaScript. Mainly the
