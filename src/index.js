@@ -35,23 +35,35 @@ const placeCage = function(context) {
   alert.runModal();
 };
 
-/*
-{
-  "name": "Placehold.it",
-  "script": "src/index.js",
-  "handler": "placeHoldIt",
-  "identifier": "place-hold-it"
-},
-{
-  "name": "Placekitten",
-  "script": "src/index.js",
-  "handler": "placeKitten",
-  "identifier": "place-kitten"
-},
-{
-  "name": "Unsplash.it",
-  "script": "src/index.js",
-  "handler": "unsplashIt",
-  "identifier": "unsplash-it"
-}
-*/
+const placeHoldIt = function(context) {
+  const alert = new Alert({
+    buttons: defaultButtons,
+    message: 'Placehold.it Options',
+    info: 'Customize the image that will be created.',
+    icon: 'placeholdit.icns'
+  }, context);
+
+  alert.runModal();
+};
+
+const placeKitten = function(context) {
+  const alert = new Alert({
+    buttons: defaultButtons,
+    message: 'Place Kitten Options',
+    info: 'Customize the kewl kitten image that will be created.',
+    icon: 'placekitten.icns'
+  }, context);
+
+  alert.runModal();
+};
+
+const unsplashIt = function(context) {
+  const alert = new Alert({
+    buttons: defaultButtons,
+    message: 'Unsplash.it Options',
+    info: 'Customize the image that will be created.',
+    icon: 'unsplashit.icns'
+  }, context);
+
+  alert.runModal();
+};
