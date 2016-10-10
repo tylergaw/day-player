@@ -40,3 +40,9 @@ Create necessary application bundle from source by running:
 ```
 make install
 ```
+
+Watch the `src` and `resources` directories and recompile when changes are made by running:
+
+```
+make watch
+```

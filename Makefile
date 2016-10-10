@@ -21,3 +21,11 @@ install:
 	@cp -r $(SRC_DIR) $(PLUGIN_PATH)$(PLUGIN_DIR)/Contents/Sketch
 	@cp -r $(MANIFEST) $(PLUGIN_PATH)$(PLUGIN_DIR)/Contents/Sketch/$(MANIFEST)
 	@echo "$(PLUGIN_NAME) installed"
+
+changed:
+	@echo "Changes detected..."
+	@make install
+
+watch:
+	@echo "Watching src directory for changes..."
+	@./node_modules/.bin/watch 'make changed' ./src ./resources

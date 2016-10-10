@@ -17,5 +17,7 @@
     "url": "https://github.com/tylergaw/day-player/issues"
   },
   "homepage": "https://github.com/tylergaw/day-player#readme",
-  "devDependencies": {}
+  "devDependencies": {
+    "watch": "1.0.1"
+  }
 }
