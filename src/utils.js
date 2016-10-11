@@ -17,7 +17,11 @@ const createPluginHandler = function(func) {
     // can access the underlying object to get directly at what we need.
     // const selection = document.selectedLayers;
     const selection = document.selectedLayers._object.selectedLayers();
-    const target = getTargetLayer(selection) || document.selectedPage;
+    const target = getTargetLayer(selection) || {};
+
+    if (!target.group) {
+      target.group = document.selectedPage;
+    }
 
     const props = {
       api: sketch,
@@ -73,6 +77,28 @@ const getTargetLayer = function(selection) {
     return target;
   }
 };
+
+/*
+function createAndPlaceImg (url, size, el) {
+  var image = NSImage.alloc().initWithContentsOfURL(NSURL.URLWithString(url));
+  var layerName = size + ' Placeholder Img';
+  var doc = context.document;
+  var layer = MSBitmapLayer.alloc().initWithFrame_image(
+    NSMakeRect(0, 0, image.size().width, image.size().height),
+    MSImageProxy.proxyWithImage(image)
+  );
+  var page = doc.currentPage();
+  var artboard = page.currentArtboard();
+  var addTo = (artboard) ? artboard : page;
+  addTo.addLayers([layer]);
+
+  layer.setConstrainProportions(false);
+  layer.setName(layerName);
+  layer.frame().setWidth(image.size().width);
+  layer.frame().setHeight(image.size().height);
+  layer.setConstrainProportions(true);
+}
+*/
 
 /**
  * dumpObj - Introspect objects
