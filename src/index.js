@@ -5,10 +5,11 @@ const fillMurray = createPluginHandler(function(props) {
   const alert = new Alert({
     message: 'Fill Murray Options',
     info: 'Customize the wonderful Bill Murray image that will be created.',
-    iconUrl: props.api.resourceNamed('fillmurray.icns')
-  });
-
-  alert.runModal();
+    iconUrl: props.api.resourceNamed('fillmurray.icns'),
+    onConfirm: function(alert) {
+      log('confirmed');
+    }
+  }).runModal();
 });
 
 const loremPixel = createPluginHandler(function(props) {

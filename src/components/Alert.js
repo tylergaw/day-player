@@ -1,7 +1,21 @@
+/**
+ * Alert A facade for NSAlert. Includes a number of convenience methods and a
+ * chainable interface.
+ *
+ * @param {Object} props Options for building the Alert and handling user input
+ * @param {Object} Alert
+ */
 const Alert = function(props) {
+  const propTypes = {
+    message: String,
+    info: String,
+    iconUrl: String,
+    onConfirm: Function,
+    onCancel: Function
+  };
+
   const alert = {
     views: [],
-    // Cocoa element
     el: NSAlert.alloc().init()
   };
 
@@ -30,8 +44,17 @@ const Alert = function(props) {
   };
 
   alert.runModal = function() {
+    // Call layout before running opening the modal to account for any
+    // dynamic layout
     alert.layout();
-    alert.el.runModal();
+
+    const onConfirm = props.onConfirm || function() {};
+    const onCancel = props.onCancel || function() {};
+    const res = parseInt(alert.el.runModal(), 10);
+    const resHandler = (res === 1000) ? onConfirm : onCancel;
+    resHandler(alert);
+
+    return alert;
   };
 
   alert.append = function(newEl) {
