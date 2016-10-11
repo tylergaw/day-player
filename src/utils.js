@@ -1,7 +1,7 @@
 /**
- * createPluginHandler - Creates a handler function that takes the single context
- * parameter required by Sketch plugins and enhances it with a number of helpful
- * properties.
+ * createPluginHandler - Creates a handler function that takes the context
+ * parameter required by Sketch plugins and enhances it with a number of
+ * helpful properties.
  *
  * @param {Function} func
  * @return {Function} A function suitable to be used as a Plugin handler
@@ -11,12 +11,20 @@ const createPluginHandler = function(func) {
     const sketch = context.api();
     const document = sketch.selectedDocument;
 
+    // NOTE: In future versions of the Sketch JS API, this commented out
+    // document.selectedLayers will be the proper way to get an instance of
+    // the Selection. It is currently in development. For the time being, we
+    // can access the underlying object to get directly at what we need.
+    // const selection = document.selectedLayers;
+    const selection = document.selectedLayers._object.selectedLayers();
+    const target = getTargetLayer(selection) || document.selectedPage;
+
     const props = {
-      api: context.api(),
+      api: sketch,
       document: document,
-      selection: document.selectedLayers,
       page: document.selectedPage,
-      context: context
+      selection: selection,
+      target: target
     };
 
     func(props);
@@ -24,38 +32,56 @@ const createPluginHandler = function(func) {
 };
 
 /**
- * Determine if we're appending image to an artboard, group, or page.
+ * Determine if appending image to an artboard, group, layer, or none.
+ *
+ * @param {Object} selection The selected layers
+ * @return {Object} target The selected layers
  */
-// const getElToAppendTo = function() {
-//   var app = NSApplication.sharedApplication();
-//   var el = null;
-//   var s = sketch.selection;
-//
-//   if (s.count() == 0) {
-//     el = context.document.currentPage();
-//   }
-//   else {
-//     var type = s[0].className();
-//
-//     if (type == 'MSArtboardGroup' || type == 'MSLayerGroup') {
-//       el = s[0];
-//     }
-//     else {
-//       app.displayDialog_withTitle("You'll need to select an artboard or a group or you can select nothing and we'll add the image to the current page.", "Invalid Selection");
-//     }
-//   }
-//
-//   return el;
-// };
+const getTargetLayer = function(selection) {
+  if (selection.length === 0) {
+    return null;
+  } else {
+    const firstSelection = selection[0];
+    const type = String(firstSelection.className());
+
+    // Bail on these types of layers we can't append or replace them right now.
+    // TODO: Could be smarter about this. Maybe the text could mask the image?
+    if (type === 'MSTextLayer') {
+      return null;
+    }
+
+    const target = {
+      selection: selection,
+      type: type
+    };
+
+    if (type === 'MSArtboardGroup' || type === 'MSLayerGroup') {
+      target.group = firstSelection;
+    } else {
+      // TODO: When possible, switch to using JS api members and methods instead
+      // of class methods.
+      const frame = firstSelection.frame();
+      target.group = firstSelection.parentGroup();
+      target.frame = {
+        x: frame.x(),
+        y: frame.y(),
+        width: frame.width(),
+        height: frame.height()
+      }
+    }
+
+    return target;
+  }
+};
 
 /**
  * dumpObj - Introspect objects
  * @param {Object} obj
  */
 const dumpObj = function(obj) {
-  log('######################################################################');
+  log('------------------------');
   log('## Dumping object ' + obj);
-  log('######################################################################');
+  log('------------------------');
   log('obj.properties:');
   log(obj.class().mocha().properties());
   log('obj.propertiesWithAncestors:');
