@@ -1,11 +1,11 @@
-const Alert = function(props, context) {
+const Alert = function(props) {
   const alert = {
     views: [],
     // Cocoa element
     el: NSAlert.alloc().init()
   };
 
-  const buttons = props.buttons || [];
+  const buttons = props.buttons || ['OK', 'Cancel'];
 
   alert.layout = function() {
     var containerHeight = 1;
@@ -53,10 +53,8 @@ const Alert = function(props, context) {
     alert.el.setInformativeText(props.info);
   }
 
-  if (props.icon) {
-    const fileUrl = context.plugin.urlForResourceNamed(props.icon);
-    const icon = NSImage.alloc().initByReferencingURL(fileUrl);
-    alert.el.setIcon(icon);
+  if (props.iconUrl) {
+    alert.el.setIcon(NSImage.alloc().initByReferencingURL(props.iconUrl));
   }
 
   return alert;
