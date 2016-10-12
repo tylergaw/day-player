@@ -9,21 +9,30 @@ const fillMurray = createPluginHandler(function(props) {
   const alert = new Alert({
     message: 'Fill Murray Options',
     info: 'Customize the wonderful Bill Murray image that will be created.',
-    iconUrl: props.api.resourceNamed('fillmurray.icns'),
+    iconUrl: api.resourceNamed('fillmurray.icns'),
     onConfirm: function(alert) {
-      const width = 400;
-      const height = 300;
-      const size = `${width}x${height}`;
-      const protocol = 'https://';
-      const url = `${protocol}${host}/${width}/${height}`;
-      api.message(`Creating a ${size}px image from ${host}...`);
+      const selectedFrame = props.target.frame;
+      const frame = (selectedFrame) ? {
+        x: selectedFrame.x,
+        y: selectedFrame.y,
+        width: selectedFrame.width,
+        height: selectedFrame.height
+      } : {
+        x: 0,
+        y: 0,
+        width: 400,
+        height: 300
+      };
 
-      log(WrappedObject);
-      // NOTE: You're working here. You're trying to determine the proper
-      // way to call newImage on something other than MSPage
-      log(group);
-      log('-----');
-      log(group.newImage({}));
+      const sizeDisplay = `${frame.width}x${frame.height}`;
+      const protocol = 'https://';
+      const url = `${protocol}${host}/${frame.width}/${frame.height}`;
+      api.message(`Creating a ${sizeDisplay}px image from ${host}...`);
+
+      const img = group.newImage({
+        frame: api.rectangle(frame.x, frame.y, frame.width, frame.height),
+        name: `${host}-${sizeDisplay}`
+      });
     }
   }).runModal();
 });

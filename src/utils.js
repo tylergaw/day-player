@@ -57,8 +57,6 @@ const getTargetLayer = function(selection) {
     target.group = selection._object.parentGroup();
   }
 
-  log(target.group);
-
   return target;
 };
 
