@@ -60,27 +60,27 @@ const getTargetLayer = function(selection) {
   return target;
 };
 
-/*
-function createAndPlaceImg (url, size, el) {
-  var image = NSImage.alloc().initWithContentsOfURL(NSURL.URLWithString(url));
-  var layerName = size + ' Placeholder Img';
-  var doc = context.document;
-  var layer = MSBitmapLayer.alloc().initWithFrame_image(
-    NSMakeRect(0, 0, image.size().width, image.size().height),
-    MSImageProxy.proxyWithImage(image)
+/**
+ * Set the image contents for a give Image object
+ *
+ * @param {Image} img A valid Image object
+ * @param {String} url A valid URL to an image
+ * @return {Image} img Return the modified Image object
+ *
+ * NOTE: In the future, this should not be necessary. Currently, we're using it
+ * to get around the Image.setImage method not working:
+ * https://github.com/BohemianCoding/SketchAPI/blob/release/40/Source/Image.js#L45
+ */
+const lowLevelSetImage = function(img, url) {
+  const _nsImage = NSImage.alloc().initWithContentsOfURL_(
+    NSURL.URLWithString(url)
   );
-  var page = doc.currentPage();
-  var artboard = page.currentArtboard();
-  var addTo = (artboard) ? artboard : page;
-  addTo.addLayers([layer]);
+  const _msImageData = MSImageData.alloc()
+    .initWithImage_convertColorSpace_(_nsImage, true);
 
-  layer.setConstrainProportions(false);
-  layer.setName(layerName);
-  layer.frame().setWidth(image.size().width);
-  layer.frame().setHeight(image.size().height);
-  layer.setConstrainProportions(true);
-}
-*/
+  img._object.setImage_(_msImageData);
+  return img;
+};
 
 /**
  * dumpObj - Introspect objects
