@@ -8,23 +8,27 @@
  */
 const createPluginHandler = function(func) {
   return function(context) {
-    const sketch = context.api();
-    const document = sketch.selectedDocument;
+    const api = context.api();
+    const document = api.selectedDocument;
 
-    // NOTE: In future versions of the Sketch JS API, this commented out
-    // document.selectedLayers will be the proper way to get an instance of
-    // the Selection. It is currently in development. For the time being, we
-    // can access the underlying object to get directly at what we need.
+    // NOTE: Using the low-level _object.selectedLayers method because it seems
+    // like document.selectedLayers isn't quite ready yet. OR maybe I'm just
+    // trying to use it in unintended ways right now?
     // const selection = document.selectedLayers;
     const selection = document.selectedLayers._object.selectedLayers();
-    const target = getTargetLayer(selection) || {};
+    const target = (selection.length !== 0) ?
+      getTargetLayer(api.wrapObject(selection[0], document)) : {
+        group: document.selectedPage
+      };
 
-    if (!target.group) {
-      target.group = document.selectedPage;
+    // TODO: Hopefully remove this when/if we're able to get the parent of a
+    // Layer via the Sketch API.
+    if (!target.group._object) {
+      target.group = api.wrapObject(target.group, document);
     }
 
     const props = {
-      api: sketch,
+      api: api,
       document: document,
       page: document.selectedPage,
       selection: selection,
@@ -38,44 +42,24 @@ const createPluginHandler = function(func) {
 /**
  * Determine if appending image to an artboard, group, layer, or none.
  *
- * @param {Object} selection The selected layers
+ * @param {WrappedObject} selection A single selected layer
  * @return {Object} target The selected layers
  */
 const getTargetLayer = function(selection) {
-  if (selection.length === 0) {
-    return null;
-  } else {
-    const firstSelection = selection[0];
-    const type = String(firstSelection.className());
+  const target = {
+    selection: selection,
+    group: selection,
+    frame: (selection.isShape) ? selection.frame : null
+  };
 
-    // Bail on these types of layers we can't append or replace them right now.
-    // TODO: Could be smarter about this. Maybe the text could mask the image?
-    if (type === 'MSTextLayer') {
-      return null;
-    }
-
-    const target = {
-      selection: selection,
-      type: type
-    };
-
-    if (type === 'MSArtboardGroup' || type === 'MSLayerGroup') {
-      target.group = firstSelection;
-    } else {
-      // TODO: When possible, switch to using JS api members and methods instead
-      // of class methods.
-      const frame = firstSelection.frame();
-      target.group = firstSelection.parentGroup();
-      target.frame = {
-        x: frame.x(),
-        y: frame.y(),
-        width: frame.width(),
-        height: frame.height()
-      }
-    }
-
-    return target;
+  if (selection.isShape || selection.isText) {
+    // TODO: Ask if we can get parent() into the JS API.
+    target.group = selection._object.parentGroup();
   }
+
+  log(target.group);
+
+  return target;
 };
 
 /*
