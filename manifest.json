@@ -9,37 +9,37 @@
   "commands" : [
     {
       "name": "Fill Murray",
-      "script": "index.js",
+      "script": "index.cocoascript",
       "handler": "fillMurray",
       "identifier": "fill-murray"
     },
     {
       "name": "Lorem Pixel",
-      "script": "index.js",
+      "script": "index.cocoascript",
       "handler": "loremPixel",
       "identifier": "lorem-pixel"
     },
     {
       "name": "Place Cage",
-      "script": "index.js",
+      "script": "index.cocoascript",
       "handler": "placeCage",
       "identifier": "place-cage"
     },
     {
       "name": "Placehold.it",
-      "script": "index.js",
+      "script": "index.cocoascript",
       "handler": "placeHoldIt",
       "identifier": "place-hold-it"
     },
     {
       "name": "Placekitten",
-      "script": "index.js",
+      "script": "index.cocoascript",
       "handler": "placeKitten",
       "identifier": "place-kitten"
     },
     {
       "name": "Unsplash.it",
-      "script": "index.js",
+      "script": "index.cocoascript",
       "handler": "unsplashIt",
       "identifier": "unsplash-it"
     }
