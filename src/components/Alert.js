@@ -3,7 +3,7 @@
  * chainable interface.
  *
  * @param {Object} props Options for building the Alert and handling user input
- * @param {Object} Alert
+ * @return {Object} alert
  */
 const Alert = function(props) {
   const propTypes = {
@@ -57,8 +57,19 @@ const Alert = function(props) {
     return alert;
   };
 
+  /**
+   * append Adds an element or elements to the Alert
+   *
+   * @param {Object|Array} newEl Either a single element or an array of elements.
+   * @return {Object} alert
+   */
   alert.append = function(newEl) {
-    alert.views.push(newEl);
+    const newViews = Array.isArray(newEl) ? newEl.reverse() : [newEl];
+
+    newViews.forEach(function(el) {
+      alert.views.push(el);
+    });
+
     return alert;
   };
 

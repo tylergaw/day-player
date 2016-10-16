@@ -27,12 +27,25 @@ const createPluginHandler = function(func) {
       target.group = api.wrapObject(target.group, document);
     }
 
+    const newImgFrame = (target.frame) ? {
+      x: target.frame.x,
+      y: target.frame.y,
+      width: target.frame.width,
+      height: target.frame.height
+    } : {
+      x: 0,
+      y: 0,
+      width: 400,
+      height: 300
+    }
+
     const props = {
       api: api,
       document: document,
       page: document.selectedPage,
       selection: selection,
-      target: target
+      target: target,
+      newImgFrame: newImgFrame
     };
 
     func(props);
