@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+  - "5.12.0"
+sudo: false
+cache:
+  directories:
+    - "/home/travis/.local"
+    - node_modules
+    - "$(npm config get cache)"
+before_install:
+  - npm config set progress false
+  - npm config set spin false
+install:
+  - npm install
+script:
+  - make lint
+deploy:
+  - provider: script
+    script: ./scripts/deploy.sh
+    on:
+      tags: true
