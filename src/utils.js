@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * createPluginHandler - Creates a handler function that takes the context
  * parameter required by Sketch plugins and enhances it with a number of
@@ -6,6 +8,7 @@
  * @param {Function} func
  * @return {Function} A function suitable to be used as a Plugin handler
  */
+// eslint-disable-next-line no-unused-vars
 const createPluginHandler = function(func) {
   return function(context) {
     const api = context.api();
@@ -37,7 +40,7 @@ const createPluginHandler = function(func) {
       y: 0,
       width: 400,
       height: 300
-    }
+    };
 
     const props = {
       api: api,
@@ -84,6 +87,7 @@ const getTargetLayer = function(selection) {
  * to get around the Image.setImage method not working:
  * https://github.com/BohemianCoding/SketchAPI/blob/release/40/Source/Image.js#L45
  */
+// eslint-disable-next-line no-unused-vars
 const lowLevelSetImage = function(img, url) {
   const _nsImage = NSImage.alloc().initWithContentsOfURL_(
     NSURL.URLWithString(url)
@@ -99,6 +103,7 @@ const lowLevelSetImage = function(img, url) {
  * dumpObj - Introspect objects
  * @param {Object} obj
  */
+// eslint-disable-next-line no-unused-vars
 const dumpObj = function(obj) {
   log('------------------------');
   log('## Dumping object ' + obj);

@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Alert A facade for NSAlert. Includes a number of convenience methods and a
  * chainable interface.
@@ -5,7 +7,9 @@
  * @param {Object} props Options for building the Alert and handling user input
  * @return {Object} alert
  */
+// eslint-disable-next-line no-unused-vars
 const Alert = function(props) {
+  // eslint-disable-next-line no-unused-vars
   const propTypes = {
     message: String,
     info: String,

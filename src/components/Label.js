@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Label A facade for NSTextField without any editable styling. Includes a
  * number of convenience methods and a chainable interface.
@@ -5,7 +7,9 @@
  * @param {Object} props Options for building the Label
  * @return {Object} label
  */
+// eslint-disable-next-line no-unused-vars
 const Label = function(props) {
+  // eslint-disable-next-line no-unused-vars
   const propTypes = {
     frame: Object,
     value: String
@@ -25,7 +29,7 @@ const Label = function(props) {
     };
 
     const textField = NSTextField.alloc().initWithFrame(
-      NSMakeRect(f.x, f.y, f.width, f.height))
+      NSMakeRect(f.x, f.y, f.width, f.height));
 
     textField.setDrawsBackground(false);
     textField.setEditable(false);

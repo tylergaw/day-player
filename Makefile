@@ -26,6 +26,10 @@ changed:
 	@echo "Changes detected..."
 	@make install
 
+lint:
+	@echo "Linting with eslint..."
+	@./node_modules/.bin/eslint ./src/**/*.js
+
 watch:
 	@echo "Watching src directory for changes..."
 	@./node_modules/.bin/watch 'make changed' ./src ./resources

@@ -6,6 +6,9 @@
     "type": "git",
     "url": "git+https://github.com/tylergaw/day-player.git"
   },
+  "scripts": {
+    "test": "make lint"
+  },
   "keywords": [
     "sketch",
     "placeholder",
@@ -18,6 +21,8 @@
   },
   "homepage": "https://github.com/tylergaw/day-player#readme",
   "devDependencies": {
+    "eslint": "3.8.0",
+    "pre-commit": "1.1.3",
     "watch": "1.0.1"
   }
 }

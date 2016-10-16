@@ -1,0 +1,78 @@
+{
+    "ecmaFeatures": {
+        "modules": true,
+        "experimentalObjectRestSpread": true
+    },
+    "rules": {
+        "accessor-pairs": 0,
+        "comma-dangle": [1, "never"],
+        "comma-spacing": [1, {"before": false, "after": true}],
+        "comma-style": [2, "last"],
+        "consistent-return": 2,
+        "dot-location": [
+            2,
+            "property"
+        ],
+        "dot-notation": 2,
+        "eol-last": 2,
+        "indent": [
+            2,
+            2,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "keyword-spacing": 2,
+        "no-bitwise": 0,
+        "no-console": 2,
+        "no-const-assign": 2,
+        "no-debugger": 2,
+        "no-empty": 2,
+        'no-missing-import': 0,
+        "no-multi-spaces": 2,
+        "no-shadow": 0,
+        "no-undef": 2,
+        "no-unreachable": 1,
+        "no-unused-expressions": 2,
+        "no-unused-vars": [
+            2,
+            {
+                "args": "none",
+                "varsIgnorePattern": "_",
+                "argsIgnorePattern": "_"
+            }
+        ],
+        "object-curly-spacing": [1, "never"],
+        "quotes": [
+            1,
+            "single",
+            "avoid-escape"
+        ],
+        "semi": 2,
+        "space-before-blocks": 2,
+        "space-in-parens": [1, "never"],
+        "strict": [
+            2,
+            "global"
+        ]
+    },
+    "env": {
+        "es6": true
+    },
+  "globals": {
+      Alert: true,
+      Label: true,
+      TextField: true,
+      createPluginHandler: true,
+      lowLevelSetImage: true,
+      NSAlert: true,
+      NSView: true,
+      NSMakeRect: true,
+      NSImage: true,
+      NSURL: true,
+      MSImageData: true,
+      NSTextField: true,
+      NSPopUpButton: true,
+      log: true
+  }
+}

@@ -1,3 +1,6 @@
+'use strict';
+
+// eslint-disable-next-line no-unused-vars
 const placeHoldIt = createPluginHandler(function(props) {
   const alert = new Alert({
     message: 'Placehold.it Options',

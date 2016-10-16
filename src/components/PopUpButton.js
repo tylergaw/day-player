@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * PopUpButton A facade for NSPopUpButton. Includes a number of convenience
  * methods and a chainable interface.
@@ -5,7 +7,9 @@
  * @param {Object} props Options for building the PopUpButton
  * @return {Object} popUpButton
  */
+// eslint-disable-next-line no-unused-vars
 const PopUpButton = function(props) {
+  // eslint-disable-next-line no-unused-vars
   const propTypes = {
     items: Array
   };

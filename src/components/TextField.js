@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * TextField A facade for NSTextField. Includes a number of convenience
  * methods and a chainable interface.
@@ -5,7 +7,9 @@
  * @param {Object} props Options for building the TextField
  * @return {Object} textField
  */
+// eslint-disable-next-line no-unused-vars
 const TextField = function(props) {
+  // eslint-disable-next-line no-unused-vars
   const propTypes = {
     frame: Object,
     value: String
