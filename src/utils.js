@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * createPluginHandler - Creates a handler function that takes the context
  * parameter required by Sketch plugins and enhances it with a number of

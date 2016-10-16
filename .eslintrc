@@ -53,7 +53,7 @@
         "space-in-parens": [1, "never"],
         "strict": [
             2,
-            "global"
+            "never"
         ]
     },
     "env": {

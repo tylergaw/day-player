@@ -1,5 +1,3 @@
-'use strict';
-
 // eslint-disable-next-line no-unused-vars
 const fillMurray = createPluginHandler(function(props) {
   const host = 'fillmurray.com';

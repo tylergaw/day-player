@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Label A facade for NSTextField without any editable styling. Includes a
  * number of convenience methods and a chainable interface.

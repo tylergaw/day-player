@@ -1,5 +1,3 @@
-'use strict';
-
 // eslint-disable-next-line no-unused-vars
 const unsplashIt = createPluginHandler(function(props) {
   const alert = new Alert({

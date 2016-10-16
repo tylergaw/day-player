@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * PopUpButton A facade for NSPopUpButton. Includes a number of convenience
  * methods and a chainable interface.

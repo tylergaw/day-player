@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Alert A facade for NSAlert. Includes a number of convenience methods and a
  * chainable interface.

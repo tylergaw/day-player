@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * TextField A facade for NSTextField. Includes a number of convenience
  * methods and a chainable interface.

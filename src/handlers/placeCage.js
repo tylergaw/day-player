@@ -1,5 +1,3 @@
-'use strict';
-
 // eslint-disable-next-line no-unused-vars
 const placeCage = createPluginHandler(function(props) {
   const alert = new Alert({
