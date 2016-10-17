@@ -86,8 +86,6 @@ const createConfirmHandler = function(props, func) {
       height: opts.height
     });
 
-    // const protocol = 'https://';
-    // const url = `${protocol}${props.host}/${opts.width}/${opts.height}`;
     const img = props.group.newImage({
       frame: props.api.rectangle(opts.x, opts.y, opts.width, opts.height),
       name: `${props.host}-${sizeDisplay}`
