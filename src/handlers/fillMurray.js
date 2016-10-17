@@ -4,21 +4,46 @@ const fillMurray = createPluginHandler(function(props) {
 
   const api = props.api;
   const group = props.target.group;
-  const frame = props.newImgFrame;
+  const initOpts = props.newImgFrame;
+
+  const elements = [
+    new Label({
+      value: 'Width:'
+    }),
+    new TextField({
+      name: 'width',
+      value: initOpts.width
+    }),
+    new Label({
+      value: 'Height:'
+    }),
+    new TextField({
+      name: 'height',
+      value: initOpts.height
+    })
+  ];
 
   const alert = new Alert({
     message: 'Fill Murray Options',
     info: 'Customize the wonderful Bill Murray image that will be created.',
     iconUrl: api.resourceNamed('fillmurray.icns'),
     onConfirm: function(a) {
-      log(a.views);
-      const sizeDisplay = `${frame.width}x${frame.height}`;
+      const userChosenOptions = a.views.filter(function(view) {
+        return view.is('input');
+      }).reduce(function(obj, view, i) {
+        obj[view.name] = view.val();
+        return obj;
+      }, {});
+
+      const opts = Object.assign({}, initOpts, userChosenOptions);
+
+      const sizeDisplay = `${opts.width}x${opts.height}`;
       const protocol = 'https://';
-      const url = `${protocol}${host}/${frame.width}/${frame.height}`;
+      const url = `${protocol}${host}/${opts.width}/${opts.height}`;
       api.message(`Creating a ${sizeDisplay}px image from ${host}...`);
 
       const img = group.newImage({
-        frame: api.rectangle(frame.x, frame.y, frame.width, frame.height),
+        frame: api.rectangle(opts.x, opts.y, opts.width, opts.height),
         name: `${host}-${sizeDisplay}`
       });
 
@@ -29,21 +54,6 @@ const fillMurray = createPluginHandler(function(props) {
       lowLevelSetImage(img, url);
     }
   });
-
-  const elements = [
-    new Label({
-      value: 'Width:'
-    }),
-    new TextField({
-      value: frame.width
-    }),
-    new Label({
-      value: 'Height:'
-    }),
-    new TextField({
-      value: frame.height
-    })
-  ];
 
   alert.append(elements).runModal();
 });

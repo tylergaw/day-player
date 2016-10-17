@@ -38,7 +38,10 @@ const Label = function(props) {
   };
 
   const label = {
-    el: createLabel(props.frame)
+    el: createLabel(props.frame),
+    is: function(type) {
+      return type === 'label';
+    }
   };
 
   /**

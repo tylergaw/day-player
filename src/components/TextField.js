@@ -31,7 +31,14 @@ const TextField = function(props) {
   };
 
   const textField = {
-    el: createTextField(props.frame)
+    el: createTextField(props.frame),
+    is: function(type) {
+      return type === 'input';
+    },
+    name: props.name || '',
+    val: function() {
+      return this.el.stringValue();
+    }
   };
 
   /**

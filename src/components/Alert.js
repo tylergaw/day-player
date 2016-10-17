@@ -18,7 +18,10 @@ const Alert = function(props) {
 
   const alert = {
     views: [],
-    el: NSAlert.alloc().init()
+    el: NSAlert.alloc().init(),
+    is: function(type) {
+      return type === 'alert';
+    }
   };
 
   const buttons = props.buttons || ['OK', 'Cancel'];

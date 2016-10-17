@@ -17,7 +17,10 @@ const PopUpButton = function(props) {
     // is undefined here. Think that's maybe a difference in CocoaScript?
     el: NSPopUpButton.alloc().initWithFrame(
       NSMakeRect(25, 100, 350, 25)
-    )
+    ),
+    is: function(type) {
+      return type === 'select';
+    }
   };
 
   if (props.items) {
