@@ -14,12 +14,6 @@
       "identifier": "fill-murray"
     },
     {
-      "name": "Lorem Pixel",
-      "script": "index.cocoascript",
-      "handler": "loremPixel",
-      "identifier": "lorem-pixel"
-    },
-    {
       "name": "Place Cage",
       "script": "index.cocoascript",
       "handler": "placeCage",

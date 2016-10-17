@@ -3,7 +3,6 @@
 @import './components/TextField.js';
 @import './components/Alert.js';
 @import './handlers/fillMurray.js';
-@import './handlers/loremPixel.js';
 @import './handlers/placeCage.js';
 @import './handlers/placeHoldIt.js';
 @import './handlers/placeKitten.js';

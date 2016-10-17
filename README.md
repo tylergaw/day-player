@@ -6,7 +6,6 @@ It allows you to insert a customized placeholder image into any Sketch document 
 of different placeholder image services.
 
  - [placehold.it](http://placehold.it/)
- - [lorempixel.com](http://lorempixel.com/)
  - [fillmurray.com](http://www.fillmurray.com/)
  - [placecage.com](http://www.placecage.com/)
  - [placekitten.com](http://placekitten.com/)
