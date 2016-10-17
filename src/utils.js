@@ -54,6 +54,46 @@ const createPluginHandler = function(func) {
 };
 
 /**
+ * createConfirmHandler - Creates a standard Day Player alert confirmation handler
+ * function that takes a single param, the Alert being used at the time.
+ *
+ * @param {Object} props Configuration for the handler
+ * @param {Function} func Optional function to run after all standard bits
+ * @return {Function} A function suitable to be used as an Alert.onConfirm
+ */
+// eslint-disable-next-line no-unused-vars
+const createConfirmHandler = function(props, func) {
+  return function(alert) {
+    const userChosenOptions = alert.views.filter(function(view) {
+      return view.is('input');
+    }).reduce(function(obj, view, i) {
+      obj[view.name] = view.val();
+      return obj;
+    }, {});
+
+    const opts = Object.assign({}, props.initOpts, userChosenOptions);
+    const sizeDisplay = `${opts.width}x${opts.height}`;
+    props.api.message(`Creating a ${sizeDisplay}px image from ${props.host}...`);
+
+    // NOTE: protocal must be a separate variable here because placing the
+    // string directly in the `url` template string causes a crash for some
+    // reason. I *think* due to the double slash.
+    const protocol = 'https://';
+    const url = `${protocol}${props.host}/${opts.width}/${opts.height}`;
+    const img = props.group.newImage({
+      frame: props.api.rectangle(opts.x, opts.y, opts.width, opts.height),
+      name: `${props.host}-${sizeDisplay}`
+    });
+
+    // NOTE: Currently, image.imageURL does not seem to work or I'm just
+    // trying to use it incorrectly. For now, I abstracted the underlying
+    // function to utils as lowLevelSetImage.
+    // TODO: img.imageURL(url);
+    lowLevelSetImage(img, url);
+  };
+};
+
+/**
  * Determine if appending image to an artboard, group, layer, or none.
  *
  * @param {WrappedObject} selection A single selected layer

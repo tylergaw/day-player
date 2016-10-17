@@ -63,6 +63,7 @@
       Alert: true,
       Label: true,
       TextField: true,
+      createConfirmHandler: true,
       createPluginHandler: true,
       lowLevelSetImage: true,
       NSAlert: true,
