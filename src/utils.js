@@ -63,6 +63,10 @@ const createPluginHandler = function(func) {
  */
 // eslint-disable-next-line no-unused-vars
 const createConfirmHandler = function(props, func) {
+  const urlBuilder = props.urlBuilder || function(parts) {
+    return `${parts.protocol}${parts.host}/${parts.width}/${parts.height}`;
+  };
+
   return function(alert) {
     const userChosenOptions = alert.views.filter(function(view) {
       return view.is('input');
@@ -75,11 +79,15 @@ const createConfirmHandler = function(props, func) {
     const sizeDisplay = `${opts.width}x${opts.height}`;
     props.api.message(`Creating a ${sizeDisplay}px image from ${props.host}...`);
 
-    // NOTE: protocal must be a separate variable here because placing the
-    // string directly in the `url` template string causes a crash for some
-    // reason. I *think* due to the double slash.
-    const protocol = 'https://';
-    const url = `${protocol}${props.host}/${opts.width}/${opts.height}`;
+    const url = urlBuilder({
+      protocol: 'https://',
+      host: props.host,
+      width: opts.width,
+      height: opts.height
+    });
+
+    // const protocol = 'https://';
+    // const url = `${protocol}${props.host}/${opts.width}/${opts.height}`;
     const img = props.group.newImage({
       frame: props.api.rectangle(opts.x, opts.y, opts.width, opts.height),
       name: `${props.host}-${sizeDisplay}`
