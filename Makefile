@@ -35,4 +35,4 @@ watch:
 	@./node_modules/.bin/watch 'make changed' ./src ./resources
 
 release:
-	@DRY_RUN=true node scripts/release.js
+	@node scripts/release.js
