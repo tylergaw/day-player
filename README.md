@@ -28,11 +28,14 @@ that artboard or group before running the plugin.
 
 ## Contributing to this project
 
-Clone the repo:
+As with most open source projects, pull requests for bug fixes, and new functionality are always welcome.
 
-```
-git clone https://github.com/tylergaw/day-player.git
-```
+Prerequisites
+
+- Node `5.x.x`+
+- npm `3.x.x`+
+
+Fork this repo and clone a local copy of your fork.
 
 Create necessary application bundle from source by running:
 
@@ -45,3 +48,7 @@ Watch the `src` and `resources` directories and recompile when changes are made 
 ```
 make watch
 ```
+
+`make install` and `make watch` will copy the application bundle to the default Sketch plugins location `~/Library/Application Support/com.bohemiancoding.sketch3/Plugins/` as `Day Player.sketchplugin`.
+
+See the `Makefile` for further details on the build process.
