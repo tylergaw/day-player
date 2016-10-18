@@ -16,6 +16,6 @@ script:
   - make lint
 deploy:
   - provider: script
-    script: ./scripts/deploy.sh
+    script: ./scripts/publish.sh
     on:
       tags: true
