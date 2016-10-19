@@ -2,7 +2,7 @@ PLUGIN_PATH := ~/Library/Application\ Support/com.bohemiancoding.sketch3/Plugins
 PLUGIN_DIR := Day\ Player.sketchplugin
 PLUGIN_FULL_PATH := $(PLUGIN_PATH)$(PLUGIN_DIR)
 PLUGIN_NAME := Day Player
-ZIP_NAME := Day\ Player.zip
+ZIP_NAME := DayPlayer.zip
 
 SRC_DIR := ./src
 RESOURCES_DIR := ./resources
@@ -34,7 +34,7 @@ build:
 	@cp -r $(SRC_DIR) $(PLUGIN_DIR)/Contents/Sketch
 	@cp -r $(MANIFEST) $(PLUGIN_DIR)/Contents/Sketch/$(MANIFEST)
 	@zip -rm $(ZIP_NAME) $(PLUGIN_DIR)
-	@echo "$(PLUGIN_NAME).zip created"
+	@echo "$(ZIP_NAME) created"
 
 changed:
 	@echo "Changes detected..."
