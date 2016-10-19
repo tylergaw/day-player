@@ -3,6 +3,7 @@ PLUGIN_DIR := Day\ Player.sketchplugin
 PLUGIN_FULL_PATH := $(PLUGIN_PATH)$(PLUGIN_DIR)
 PLUGIN_NAME := Day Player
 ZIP_NAME := DayPlayer.zip
+S3_BUCKET := s3://day-player
 
 SRC_DIR := ./src
 RESOURCES_DIR := ./resources
@@ -33,6 +34,9 @@ build:
 	@cp -r $(RESOURCES_DIR) $(PLUGIN_DIR)/Contents/Resources
 	@cp -r $(SRC_DIR) $(PLUGIN_DIR)/Contents/Sketch
 	@cp -r $(MANIFEST) $(PLUGIN_DIR)/Contents/Sketch/$(MANIFEST)
+	make package
+
+package:
 	@zip -rm $(ZIP_NAME) $(PLUGIN_DIR)
 	@echo "$(ZIP_NAME) created"
 
@@ -50,3 +54,7 @@ watch:
 
 release:
 	@node scripts/release.js
+
+publish:
+	@make build
+	@aws s3 cp ./DayPlayer.zip $(S3_BUCKET)/releases/DayPlayer-$(TRAVIS_TAG).zip
