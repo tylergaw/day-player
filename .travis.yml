@@ -11,6 +11,7 @@ before_install:
   - npm config set progress false
   - npm config set spin false
 install:
+  - pip install --user -U awscli
   - npm install
 script:
   - make lint
