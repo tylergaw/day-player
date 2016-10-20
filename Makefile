@@ -1,6 +1,5 @@
 PLUGIN_PATH := ~/Library/Application\ Support/com.bohemiancoding.sketch3/Plugins/
 PLUGIN_DIR := Day\ Player.sketchplugin
-PLUGIN_FULL_PATH := $(PLUGIN_PATH)$(PLUGIN_DIR)
 PLUGIN_NAME := Day Player
 ZIP_NAME := DayPlayer.zip
 S3_BUCKET := s3://day-player
@@ -15,28 +14,24 @@ clean:
 	@rm -f $(ZIP_NAME)
 	@rm -rf $(PLUGIN_PATH)$(PLUGIN_DIR)
 
-install:
-	@make clean
-	@echo "Installing $(PLUGIN_NAME)..."
-	@mkdir $(PLUGIN_FULL_PATH)
-	@mkdir $(PLUGIN_FULL_PATH)/Contents
-	@cp $(LICENSE) $(PLUGIN_PATH)$(PLUGIN_DIR)/Contents/$(LICENSE)
-	@cp -r $(RESOURCES_DIR) $(PLUGIN_PATH)$(PLUGIN_DIR)/Contents/Resources
-	@cp -r $(SRC_DIR) $(PLUGIN_PATH)$(PLUGIN_DIR)/Contents/Sketch
-	@cp -r $(MANIFEST) $(PLUGIN_PATH)$(PLUGIN_DIR)/Contents/Sketch/$(MANIFEST)
-	@echo "$(PLUGIN_NAME) installed"
-
 build:
-	make clean
+	@make clean
 	@mkdir $(PLUGIN_DIR)
 	@mkdir $(PLUGIN_DIR)/Contents
 	@cp $(LICENSE) $(PLUGIN_DIR)/Contents/$(LICENSE)
 	@cp -r $(RESOURCES_DIR) $(PLUGIN_DIR)/Contents/Resources
 	@cp -r $(SRC_DIR) $(PLUGIN_DIR)/Contents/Sketch
 	@cp -r $(MANIFEST) $(PLUGIN_DIR)/Contents/Sketch/$(MANIFEST)
-	make package
+
+install:
+	@make clean
+	@echo "Installing $(PLUGIN_NAME)..."
+	@make build
+	@mv $(PLUGIN_DIR) $(PLUGIN_PATH)
+	@echo "$(PLUGIN_NAME) installed"
 
 package:
+	make build
 	@zip -rm $(ZIP_NAME) $(PLUGIN_DIR)
 	@echo "$(ZIP_NAME) created"
 
@@ -56,5 +51,5 @@ release:
 	@node scripts/release.js
 
 publish:
-	@make build
-	@aws s3 cp ./DayPlayer.zip $(S3_BUCKET)/releases/DayPlayer-$(TRAVIS_TAG).zip
+	@make package
+	@aws s3 cp $(ZIP_NAME) $(S3_BUCKET)/releases/DayPlayer-$(TRAVIS_TAG).zip
