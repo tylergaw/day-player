@@ -1,4 +1,4 @@
-# Day Player
+# Day Player [![Build Status](https://travis-ci.org/tylergaw/day-player.svg)](https://travis-ci.org/tylergaw/day-player)
 A Sketch Plugin for creating placeholder images from online services.
 
 ## What Does It Do?
