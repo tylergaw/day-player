@@ -16,10 +16,14 @@ const PopUpButton = function(props) {
     // NOTE: The documented signature is initWithFrame:pullsDown: but that
     // is undefined here. Think that's maybe a difference in CocoaScript?
     el: NSPopUpButton.alloc().initWithFrame(
-      NSMakeRect(25, 100, 350, 25)
+      NSMakeRect(25, 100, 350, 28)
     ),
     is: function(type) {
       return type === 'select';
+    },
+    name: props.name || '',
+    val: function() {
+      return this.el.titleOfSelectedItem();
     }
   };
 

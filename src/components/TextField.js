@@ -23,7 +23,7 @@ const TextField = function(props) {
       x: 25,
       y: 100,
       width: 350,
-      height: 25
+      height: 24
     };
 
     return NSTextField.alloc().initWithFrame(

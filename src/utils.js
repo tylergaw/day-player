@@ -69,7 +69,7 @@ const createConfirmHandler = function(props, func) {
 
   return function(alert) {
     const userChosenOptions = alert.views.filter(function(view) {
-      return view.is('input');
+      return view.is('input') || view.is('select');
     }).reduce(function(obj, view, i) {
       obj[view.name] = view.val();
       return obj;
@@ -83,7 +83,8 @@ const createConfirmHandler = function(props, func) {
       protocol: 'https://',
       host: props.host,
       width: opts.width,
-      height: opts.height
+      height: opts.height,
+      allParts: opts
     });
 
     const img = props.group.newImage({

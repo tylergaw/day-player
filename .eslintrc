@@ -62,6 +62,7 @@
   "globals": {
       Alert: true,
       Label: true,
+      PopUpButton: true,
       TextField: true,
       createConfirmHandler: true,
       createPluginHandler: true,
