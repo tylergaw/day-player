@@ -3,7 +3,7 @@ A Sketch Plugin for creating placeholder images from online services.
 
 ## Installation
 
-- [Download the latest version (3.0.0-alpha.4)](http://day-player.s3-website-us-east-1.amazonaws.com/releases/DayPlayer-3.0.0-alpha.4.zip)
+- [Download the latest version (3.0.0-alpha.5)](http://day-player.s3-website-us-east-1.amazonaws.com/releases/DayPlayer-3.0.0-alpha.5.zip)
 - Unzip the file
 - Double-click Day Player.sketchplugin to install
 
