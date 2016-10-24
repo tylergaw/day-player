@@ -16,6 +16,27 @@ const placeHoldIt = createPluginHandler(function(props) {
     new TextField({
       name: 'height',
       value: initOpts.height
+    }),
+    new Label({
+      value: 'Text:'
+    }),
+    new TextField({
+      name: 'text',
+      value: 'placeholder'
+    }),
+    new Label({
+      value: 'Background color:'
+    }),
+    new TextField({
+      name: 'bgColor',
+      value: 'aeaeae'
+    }),
+    new Label({
+      value: 'Text color:'
+    }),
+    new TextField({
+      name: 'color',
+      value: '949494'
     })
   ];
 
@@ -25,7 +46,14 @@ const placeHoldIt = createPluginHandler(function(props) {
     host: 'placehold.it',
     initOpts: initOpts,
     urlBuilder: function(parts) {
-      return `${parts.protocol}${parts.host}/${parts.width}x${parts.height}`;
+      var url = `${parts.protocol}${parts.host}/${parts.width}x${parts.height}/${parts.allParts.bgColor}/${parts.allParts.color}`;
+      const text = parts.allParts.text;
+
+      if (text.length) {
+        url += `?text=${encodeURIComponent(text)}`;
+      }
+
+      return url;
     }
   });
 
