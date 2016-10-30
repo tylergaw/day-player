@@ -8,6 +8,12 @@
   "compatibleVersion": 40.2,
   "commands" : [
     {
+      "name": "Unsplash.it",
+      "script": "index.cocoascript",
+      "handler": "unsplashIt",
+      "identifier": "unsplash-it"
+    },
+    {
       "name": "Fill Murray",
       "script": "index.cocoascript",
       "handler": "fillMurray",
@@ -30,23 +36,16 @@
       "script": "index.cocoascript",
       "handler": "placeKitten",
       "identifier": "place-kitten"
-    },
-    {
-      "name": "Unsplash.it",
-      "script": "index.cocoascript",
-      "handler": "unsplashIt",
-      "identifier": "unsplash-it"
     }
   ],
   "menu": {
     "title": "Day Player",
     "items": [
-      "fill-murray",
-      "lorem-pixel",
-      "place-cage",
+      "unsplash-it",
       "place-hold-it",
-      "place-kitten",
-      "unsplash-it"
+      "fill-murray",
+      "place-cage",
+      "place-kitten"
     ]
   }
 }
