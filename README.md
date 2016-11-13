@@ -19,12 +19,49 @@ of different placeholder image services.
 
 ## Usage
  - Open a new or existing Sketch document
- - Plugins > Day Player > service...
- - Update the options to your liking, hit OK
+ - Plugins > Day Player > Service...
+ - Update the options to your liking, OK/Enter
  - The image is created on the canvas
 
-If you want the image created on a specific artboard or within a group, select
-that artboard or group before running the plugin.
+![Animated gif showing basic Day Player usage](https://d3vv6lp55qjaqc.cloudfront.net/items/1q2S3E2B333G2m382A1v/Screen%20Recording%202016-11-13%20at%2001.52%20PM.gif)
+
+### Appending images to an Artboard or Group
+- Open a new or existing Sketch document
+- Select the Artboard or Group
+- Plugins > Day Player > Service...
+- Update the options to your liking, OK/Enter
+- The image is created within the Artboard or Group
+- Image will be placed in the top left corner of the Artboard or Group
+
+**Artboard:**
+
+![Animated gif showing Day Player usage on Artboard](https://d3vv6lp55qjaqc.cloudfront.net/items/2P1n0t0H1o0y0E1J1I3t/Screen%20Recording%202016-11-13%20at%2001.58%20PM.gif)
+
+**Group:**
+
+![Animated gif showing Day Player usage on Group](https://d3vv6lp55qjaqc.cloudfront.net/items/3W0l0d0t322B1n0p1a3V/Screen%20Recording%202016-11-13%20at%2002.00%20PM.gif)
+
+### Creating images with dimensions and position of existing Layers
+- Open a new or existing Sketch document
+- Select the desired Layer
+- Plugins > Day Player > Service...
+- Update the options to your liking, OK/Enter
+- The image is created in the parent group of the selected layer
+- Image will inherit the x, y, width, and height of the selected layer
+
+![Animated gif showing Day Player existing layer usage](https://d3vv6lp55qjaqc.cloudfront.net/items/0c1x3l0m1r473F1s0q1h/Screen%20Recording%202016-11-13%20at%2002.10%20PM.gif)
+
+### Advanced Service Options
+
+All services offer width, height, and black & white / color options. Unsplash.it and Placehold.it offer further options to customize the placeholder images.
+
+**Unsplash.it:**
+
+![Animated gif showing Day Player Unsplash.it usage](https://d3vv6lp55qjaqc.cloudfront.net/items/3a1g161P1S0r0J2g030Y/Screen%20Recording%202016-11-13%20at%2002.15%20PM.gif)
+
+**Placehold.it:**
+
+![Animated gif showing Day Player Placehold.it usage](https://d3vv6lp55qjaqc.cloudfront.net/items/2H2w0o3U2A1U3D2Q3B1t/Screen%20Recording%202016-11-13%20at%2002.18%20PM.gif)
 
 -------
 
@@ -37,6 +74,12 @@ Prerequisites
 - Node `5.x.x`+
 
 Fork this repo and clone a local copy of your fork.
+
+Install dependencies:
+
+```
+npm install
+```
 
 Create necessary application bundle from source by running:
 
