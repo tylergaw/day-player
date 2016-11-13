@@ -1,4 +1,4 @@
-[![Day Player](https://cl.ly/3E3y0L291G2C/dayplayer-sketch.png) Download the latest version (3.0.0-rc.2)](http://day-player.s3-website-us-east-1.amazonaws.com/releases/DayPlayer-3.0.0-rc.2.zip)
+[![Day Player Download](https://d3vv6lp55qjaqc.cloudfront.net/items/1u3H0M0L1j281F0R2E39/dayplayer-sketch.png) Download the latest version (3.0.0-rc.2)](http://day-player.s3-website-us-east-1.amazonaws.com/releases/DayPlayer-3.0.0-rc.2.zip)
 
 ## Day Player [![Build Status](https://travis-ci.org/tylergaw/day-player.svg)](https://travis-ci.org/tylergaw/day-player)
 A Sketch Plugin for creating placeholder images from online services.
