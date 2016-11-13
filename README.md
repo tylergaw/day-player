@@ -1,53 +1,100 @@
-# Day Player
-A collection of Sketch Plugins for creating placeholder images.
+[![Day Player Download](https://d3vv6lp55qjaqc.cloudfront.net/items/1u3H0M0L1j281F0R2E39/dayplayer-sketch.png) Download the latest version (3.0.0)](http://day-player.s3-website-us-east-1.amazonaws.com/releases/DayPlayer-3.0.0.zip)
+
+## Day Player [![Build Status](https://travis-ci.org/tylergaw/day-player.svg)](https://travis-ci.org/tylergaw/day-player)
+A Sketch Plugin for creating placeholder images from online services.
+
+## Installation
+
+- [ Download the latest version (3.0.0)](http://day-player.s3-website-us-east-1.amazonaws.com/releases/DayPlayer-3.0.0.zip)
+- Unzip the file
+- Double-click Day Player.sketchplugin to install
 
 ## What Does It Do?
-It allows you to insert a customized placeholder image into any Sketch document from a number
-of different placeholder image services.
+It allows you to insert customized placeholder images into any Sketch document from a number
+of different placeholder image services:
 
+ - [unsplash.it](http://unsplash.it/)
  - [placehold.it](http://placehold.it/)
- - [lorempixel.com](http://lorempixel.com/)
  - [fillmurray.com](http://www.fillmurray.com/)
  - [placecage.com](http://www.placecage.com/)
  - [placekitten.com](http://placekitten.com/)
- - [unsplash.it](http://unsplash.it/)
 
-![Screenshots of Day Player in use](http://f.cl.ly/items/0Q1x2l0k371C173X3U0g/dayplayer-screens.jpg)
-
-## Installation
-There are two different ways to install Day Player. Official Sketch Plugin installation
-documentation can be found in the [plugin docs](http://bohemiancoding.com/sketch/support/developer/01-introduction/01.html).
-
-### Git clone (best way to go)
- - Using a command line app (Terminal, iTerm, etc) navigate to the Sketch Plugins
- directory. This is different depending on your set up. If you're unsure, open
- Sketch and go to the Plugins menu > Reveal Plugins Folder
- - Once you're in the Plugins directory `git clone https://github.com/tylergaw/day-player.git` or your fork.
- - You can find the plugins in the Plugins Menu > day-player
-
-### Zip download
- - If you're reading this on GitHub, there should be a Download Zip button to the
- right of this text. Download the zip file.
- - Open your Sketch Plugins folder by going to the Plugins menu > Reveal Plugins Folder
- - Unzip the Day Player zip file. Place the entire folder in the Sketch plugins folder
- - You can change the name of that folder to anything you want.
- - You can find the plugins in the Plugins Menu > day-player (or the name you gave it)
-
-## Usage
-
+## How to use it
  - Open a new or existing Sketch document
- - Plugins > Menu > day-player > Choose the service you want an image from
- - Update the options to your liking, hit OK
- - The image should be created on the canvas
+ - Plugins > Day Player > Service...
+ - Update the options to your liking, OK/Enter
+ - The image is created on the canvas
 
-If you want the image created on a specific artboard or within a group, select
-the artboard or group before running the plugin.
+![Animated gif showing basic Day Player usage](https://d3vv6lp55qjaqc.cloudfront.net/items/1q2S3E2B333G2m382A1v/Screen%20Recording%202016-11-13%20at%2001.52%20PM.gif)
 
-## Sketch Requirements
+### Appending images to an Artboard or Group
+- Open a new or existing Sketch document
+- Select the Artboard or Group
+- Plugins > Day Player > Service...
+- Update the options to your liking, OK/Enter
+- The image is created within the Artboard or Group
+- Image will be placed in the top left corner of the Artboard or Group
 
-Day Player 2.x works with Sketch 3.3+ only. If you are using an earlier version of Sketch, use Day Player 1.1.0.
+**Artboard:**
 
-You'll need the latest release of Sketch 3, version 3.0.2. It's in the App Store.
-This version is needed because I'm making use of features that are available now
-that they've switched from JSTalk to CocoaScript. Mainly the
-[COSAlertWindow](https://github.com/ccgus/CocoaScript/tree/master/src/framework) class.
+![Animated gif showing Day Player usage on Artboard](https://d3vv6lp55qjaqc.cloudfront.net/items/2P1n0t0H1o0y0E1J1I3t/Screen%20Recording%202016-11-13%20at%2001.58%20PM.gif)
+
+**Group:**
+
+![Animated gif showing Day Player usage on Group](https://d3vv6lp55qjaqc.cloudfront.net/items/1y2c3Z3m3K2F0b1T2720/Screen%20Recording%202016-11-13%20at%2003.20%20PM.gif)
+
+### Creating images with dimensions and position of existing Layers
+- Open a new or existing Sketch document
+- Select the desired Layer
+- Plugins > Day Player > Service...
+- Update the options to your liking, OK/Enter
+- The image is created in the parent group of the selected layer
+- Image will inherit the x, y, width, and height of the selected layer
+
+![Animated gif showing Day Player existing layer usage](https://d3vv6lp55qjaqc.cloudfront.net/items/0o1M3n07223o223D2C3R/Screen%20Recording%202016-11-13%20at%2003.23%20PM.gif)
+
+### Advanced Service Options
+
+All services offer width, height, and black & white / color options. Unsplash.it and Placehold.it offer further options to customize the placeholder images.
+
+**Unsplash.it:**
+
+![Animated gif showing Day Player Unsplash.it usage](https://d3vv6lp55qjaqc.cloudfront.net/items/3a1g161P1S0r0J2g030Y/Screen%20Recording%202016-11-13%20at%2002.15%20PM.gif)
+
+**Placehold.it:**
+
+![Animated gif showing Day Player Placehold.it usage](https://d3vv6lp55qjaqc.cloudfront.net/items/2h0x3M1S250N1i1g081M/Screen%20Recording%202016-11-13%20at%2003.26%20PM.gif)
+
+-------
+
+## Contributing to this project
+
+As with most open source projects, pull requests for bug fixes, and new functionality are always welcome.
+
+Prerequisites
+
+- Node `5.x.x`+
+
+Fork this repo and clone a local copy of your fork.
+
+Install dependencies:
+
+```
+npm install
+```
+
+Create necessary application bundle from source by running:
+
+```
+make install
+```
+
+Watch the `src` and `resources` directories and recompile when changes are made by running:
+
+```
+make watch
+```
+
+`make install` and `make watch` will copy the application bundle to the default Sketch plugins location `~/Library/Application Support/com.bohemiancoding.sketch3/Plugins/` as `Day Player.sketchplugin`.
+
+See the `Makefile` for further details on the build process.

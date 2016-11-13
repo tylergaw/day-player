@@ -1,0 +1,26 @@
+language: node_js
+node_js:
+- 5.12.0
+sudo: false
+cache:
+  directories:
+  - /home/travis/.local
+  - node_modules
+  - $(npm config get cache)
+before_install:
+- npm config set progress false
+- npm config set spin false
+install:
+- pip install --user -U awscli
+- npm install
+script:
+- make lint
+deploy:
+- provider: script
+  script: make publish
+  on:
+    tags: true
+env:
+  global:
+  - AWS_ACCESS_KEY_ID=AKIAIRMRYU635FO4D26A
+  - secure: PqKc8FFSOiIQvEMkQtPv9b55NwdMreHEF4njCnnk/pcBgUIep8Ew2JYmdp/KuSx1gyZBRys0hJqSTJ6FVZrCkI7pHD3bkKrNGq807c5yVFHtTzTUoQZ62zYEC/fnsbvKdd6sGtznABB1boiuiV1Crj0v2gtkA/kUJ431XUFqBw4=

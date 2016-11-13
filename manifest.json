@@ -1,0 +1,51 @@
+{
+  "name": "Day Player",
+  "description": "A Plugin for creating images from placeholder services.",
+  "author": "Tyler Gaw",
+  "homepage": "https://github.com/tylergaw/day-player",
+  "version": "3.0.0",
+  "identifier": "com.sketchapp.tylergaw.day-player",
+  "compatibleVersion": 41,
+  "commands" : [
+    {
+      "name": "Unsplash.it",
+      "script": "index.cocoascript",
+      "handler": "unsplashIt",
+      "identifier": "unsplash-it"
+    },
+    {
+      "name": "Fill Murray",
+      "script": "index.cocoascript",
+      "handler": "fillMurray",
+      "identifier": "fill-murray"
+    },
+    {
+      "name": "Place Cage",
+      "script": "index.cocoascript",
+      "handler": "placeCage",
+      "identifier": "place-cage"
+    },
+    {
+      "name": "Placehold.it",
+      "script": "index.cocoascript",
+      "handler": "placeHoldIt",
+      "identifier": "place-hold-it"
+    },
+    {
+      "name": "Placekitten",
+      "script": "index.cocoascript",
+      "handler": "placeKitten",
+      "identifier": "place-kitten"
+    }
+  ],
+  "menu": {
+    "title": "Day Player",
+    "items": [
+      "unsplash-it",
+      "place-hold-it",
+      "fill-murray",
+      "place-cage",
+      "place-kitten"
+    ]
+  }
+}

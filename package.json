@@ -1,0 +1,29 @@
+{
+  "name": "day-player-plugin-sketchapp",
+  "version": "3.0.0",
+  "description": "A Sketch Plugin for creating placeholder images",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylergaw/day-player.git"
+  },
+  "scripts": {
+    "test": "make lint"
+  },
+  "keywords": [
+    "sketch",
+    "placeholder",
+    "images"
+  ],
+  "author": "Tyler Gaw",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tylergaw/day-player/issues"
+  },
+  "homepage": "https://github.com/tylergaw/day-player#readme",
+  "devDependencies": {
+    "eslint": "3.8.0",
+    "pre-commit": "1.1.3",
+    "prompt": "1.0.0",
+    "watch": "1.0.1"
+  }
+}
