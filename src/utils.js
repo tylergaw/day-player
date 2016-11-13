@@ -11,22 +11,9 @@ const createPluginHandler = function(func) {
   return function(context) {
     const api = context.api();
     const document = api.selectedDocument;
-
-    // NOTE: Using the low-level _object.selectedLayers method because it seems
-    // like document.selectedLayers isn't quite ready yet. OR maybe I'm just
-    // trying to use it in unintended ways right now?
-    // const selection = document.selectedLayers;
-    const selection = document.selectedLayers._object.selectedLayers();
-    const target = (selection.length !== 0) ?
-      getTargetLayer(api.wrapObject(selection[0], document)) : {
-        group: document.selectedPage
-      };
-
-    // TODO: Hopefully remove this when/if we're able to get the parent of a
-    // Layer via the Sketch API.
-    if (!target.group._object) {
-      target.group = api.wrapObject(target.group, document);
-    }
+    const selection = document.selectedLayers;
+    const target = (selection.isEmpty) ? {group: document.selectedPage} :
+      getTargetLayer(selection, context);
 
     const newImgFrame = (target.frame) ? {
       x: target.frame.x,
@@ -88,60 +75,56 @@ const createConfirmHandler = function(props, func) {
     });
 
     const img = props.group.newImage({
-      frame: props.api.rectangle(opts.x, opts.y, opts.width, opts.height),
+      frame: new props.api.Rectangle(opts.x, opts.y, opts.width, opts.height),
       name: `${props.host}-${sizeDisplay}`
     });
 
-    // NOTE: Currently, image.imageURL does not seem to work or I'm just
-    // trying to use it incorrectly. For now, I abstracted the underlying
-    // function to utils as lowLevelSetImage.
-    // TODO: img.imageURL(url);
-    lowLevelSetImage(img, url);
+    img.imageURL = NSURL.URLWithString(url);
   };
 };
 
 /**
  * Determine if appending image to an artboard, group, layer, or none.
  *
- * @param {WrappedObject} selection A single selected layer
+ * @param {Selection} selection The current Selection
+ * @param {Object} context The current context
  * @return {Object} target The selected layers
  */
-const getTargetLayer = function(selection) {
-  const target = {
+const getTargetLayer = function(selection, context) {
+  var layers = [];
+
+  selection.iterate(function(layer) {
+    layers.push(layer);
+  });
+
+  // TODO: Currently we'll only create an image for a single layer selected. We
+  // only grab the first one off the list of selections. In the future, we should
+  // create an image for each selection.
+  const firstLayer = layers[0];
+  
+  var target = {
     selection: selection,
-    group: selection,
-    frame: (selection.isShape) ? selection.frame : null
+    frame: (firstLayer.isShape) ? firstLayer.frame : null
   };
 
-  if (selection.isShape || selection.isText) {
-    // TODO: Ask if we can get parent() into the JS API.
-    target.group = selection._object.parentGroup();
+  if (firstLayer.isGroup) {
+    target.group = firstLayer;
+  } else {
+    // FIXME: If the user has selected layer(s) that do not count as a group;
+    // (shape, text, line, etc) we need to set the target.group to the parent
+    // group of the selected layer(s).
+    // The JS API does not currently offer a way to access the parentGroup of
+    // a Layer object. To get around this, we use the low-level _object and
+    // parentGroup() method.
+    // Doing so gives us an unwrapped Sketch Object. We must use wrapObject to
+    // ensure we return a wrapped object for the target.group.
+    // In the future, it would be good to have a Layer.parentGroup getter.
+    const api = context.api();
+    const document = api.selectedDocument;
+    target.group = api.wrapObject(firstLayer._object.parentGroup(), document);
   }
 
   return target;
-};
-
-/**
- * Set the image contents for a give Image object
- *
- * @param {Image} img A valid Image object
- * @param {String} url A valid URL to an image
- * @return {Image} img Return the modified Image object
- *
- * NOTE: In the future, this should not be necessary. Currently, we're using it
- * to get around the Image.setImage method not working:
- * https://github.com/BohemianCoding/SketchAPI/blob/release/40/Source/Image.js#L45
- */
-// eslint-disable-next-line no-unused-vars
-const lowLevelSetImage = function(img, url) {
-  const _nsImage = NSImage.alloc().initWithContentsOfURL_(
-    NSURL.URLWithString(url)
-  );
-  const _msImageData = MSImageData.alloc()
-    .initWithImage_convertColorSpace_(_nsImage, true);
-
-  img._object.setImage_(_msImageData);
-  return img;
 };
 
 /**
