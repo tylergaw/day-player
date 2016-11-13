@@ -10,8 +10,8 @@ A Sketch Plugin for creating placeholder images from online services.
 - Double-click Day Player.sketchplugin to install
 
 ## What Does It Do?
-It allows you to insert a customized placeholder image into any Sketch document from a number
-of different placeholder image services.
+It allows you to insert customized placeholder images into any Sketch document from a number
+of different placeholder image services:
 
  - [unsplash.it](http://unsplash.it/)
  - [placehold.it](http://placehold.it/)
@@ -19,7 +19,7 @@ of different placeholder image services.
  - [placecage.com](http://www.placecage.com/)
  - [placekitten.com](http://placekitten.com/)
 
-## Usage
+## How to use it
  - Open a new or existing Sketch document
  - Plugins > Day Player > Service...
  - Update the options to your liking, OK/Enter
