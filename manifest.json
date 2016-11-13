@@ -5,7 +5,7 @@
   "homepage": "https://github.com/tylergaw/day-player",
   "version": "3.0.0",
   "identifier": "com.sketchapp.tylergaw.day-player",
-  "compatibleVersion": 40.2,
+  "compatibleVersion": 41,
   "commands" : [
     {
       "name": "Unsplash.it",
