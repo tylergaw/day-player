@@ -51,7 +51,7 @@ of different placeholder image services.
 - The image is created in the parent group of the selected layer
 - Image will inherit the x, y, width, and height of the selected layer
 
-![Animated gif showing Day Player existing layer usage](https://d3vv6lp55qjaqc.cloudfront.net/items/0c1x3l0m1r473F1s0q1h/Screen%20Recording%202016-11-13%20at%2002.10%20PM.gif)
+![Animated gif showing Day Player existing layer usage](https://d3vv6lp55qjaqc.cloudfront.net/items/0o1M3n07223o223D2C3R/Screen%20Recording%202016-11-13%20at%2003.23%20PM.gif)
 
 ### Advanced Service Options
 
@@ -63,7 +63,7 @@ All services offer width, height, and black & white / color options. Unsplash.it
 
 **Placehold.it:**
 
-![Animated gif showing Day Player Placehold.it usage](https://d3vv6lp55qjaqc.cloudfront.net/items/2H2w0o3U2A1U3D2Q3B1t/Screen%20Recording%202016-11-13%20at%2002.18%20PM.gif)
+![Animated gif showing Day Player Placehold.it usage](https://d3vv6lp55qjaqc.cloudfront.net/items/2h0x3M1S250N1i1g081M/Screen%20Recording%202016-11-13%20at%2003.26%20PM.gif)
 
 -------
 
