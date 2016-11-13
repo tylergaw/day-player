@@ -41,7 +41,7 @@ of different placeholder image services.
 
 **Group:**
 
-![Animated gif showing Day Player usage on Group](https://d3vv6lp55qjaqc.cloudfront.net/items/3W0l0d0t322B1n0p1a3V/Screen%20Recording%202016-11-13%20at%2002.00%20PM.gif)
+![Animated gif showing Day Player usage on Group](https://d3vv6lp55qjaqc.cloudfront.net/items/1y2c3Z3m3K2F0b1T2720/Screen%20Recording%202016-11-13%20at%2003.20%20PM.gif)
 
 ### Creating images with dimensions and position of existing Layers
 - Open a new or existing Sketch document
