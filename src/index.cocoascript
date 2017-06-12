@@ -8,3 +8,10 @@
 @import './handlers/placeHoldIt.js';
 @import './handlers/placeKitten.js';
 @import './handlers/unsplashIt.js';
+
+var _fillMurray 	= fillMurray
+var _placeCage 		= placeCage
+var _placeHoldIt 	= placeHoldIt
+var _placeKitten 	= placeKitten
+var _unsplashIt 	= unsplashIt
+

@@ -10,31 +10,31 @@
     {
       "name": "Unsplash.it",
       "script": "index.cocoascript",
-      "handler": "unsplashIt",
+      "handler": "_unsplashIt",
       "identifier": "unsplash-it"
     },
     {
       "name": "Fill Murray",
       "script": "index.cocoascript",
-      "handler": "fillMurray",
+      "handler": "_fillMurray",
       "identifier": "fill-murray"
     },
     {
       "name": "Place Cage",
       "script": "index.cocoascript",
-      "handler": "placeCage",
+      "handler": "_placeCage",
       "identifier": "place-cage"
     },
     {
       "name": "Placehold.it",
       "script": "index.cocoascript",
-      "handler": "placeHoldIt",
+      "handler": "_placeHoldIt",
       "identifier": "place-hold-it"
     },
     {
       "name": "Placekitten",
       "script": "index.cocoascript",
-      "handler": "placeKitten",
+      "handler": "_placeKitten",
       "identifier": "place-kitten"
     }
   ],
