@@ -1,6 +1,6 @@
 {
   "name": "day-player-plugin-sketchapp",
-  "version": "3.0.1",
+  "version": "3.0.1-rc.1",
   "description": "A Sketch Plugin for creating placeholder images",
   "repository": {
     "type": "git",
