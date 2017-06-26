@@ -30,7 +30,7 @@ const fillMurray = createPluginHandler(function(props) {
   const onConfirm = createConfirmHandler({
     api: props.api,
     group: props.target.group,
-    host: 'fillmurray.com',
+    host: 'www.fillmurray.com',
     initOpts: initOpts,
     urlBuilder: function(parts) {
       const base = `${parts.protocol}${parts.host}`;

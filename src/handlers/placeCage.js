@@ -30,7 +30,7 @@ const placeCage = createPluginHandler(function(props) {
   const onConfirm = createConfirmHandler({
     api: props.api,
     group: props.target.group,
-    host: 'placecage.com',
+    host: 'www.placecage.com',
     initOpts: initOpts,
     urlBuilder: function(parts) {
       const base = `${parts.protocol}${parts.host}`;
